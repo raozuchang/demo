@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <declare-styleable name="SingleImageView">
+        <attr name="topLeftDrawable" format="reference" />      <!-- 上左图标 -->
+        <attr name="topRightDrawable" format="reference" />     <!-- 上右图标 -->
+        <attr name="bottomLeftDrawable" format="reference" />   <!-- 下左图标 -->
+        <attr name="bottomRightDrawable" format="reference" />  <!-- 下右图标 -->
+        <attr name="editable" format="boolean"/>                <!-- 是否处于可编辑状态 -->
+        <attr name="frameColor" format="color" />               <!-- 边框颜色 -->
+        <attr name="frameWidth" format="dimension" />           <!-- 边框线宽度 -->
+        <attr name="framePadding" format="dimension" />         <!-- 边框与图片的间距 -->
+        <attr name="src" format="reference" />                  <!-- 资源文件 -->
+        <attr name="scale" format="float"/>                     <!-- 缩放等级 -->
+        <attr name="degree" format="float" />                   <!-- 旋转角度 -->
+
+    </declare-styleable>
+    <declare-styleable name="EditText">
+        <attr name="lineColor" format="color" />
+        <attr name="lineWidth" format="float" />
+
+    </declare-styleable>
+
+    <!--<declare-styleable name="MyView">
+        <attr name="topLeftDrawable" format="reference" />      &lt;!&ndash; 上左图标 &ndash;&gt;
+        <attr name="topRightDrawable" format="reference" />     &lt;!&ndash; 上右图标 &ndash;&gt;
+        <attr name="bottomLeftDrawable" format="reference" />   &lt;!&ndash; 下左图标 &ndash;&gt;
+        <attr name="bottomRightDrawable" format="reference" />  &lt;!&ndash; 下右图标 &ndash;&gt;
+        <attr name="editable" format="boolean"/>                &lt;!&ndash; 是否处于可编辑状态 &ndash;&gt;
+        <attr name="frameColor" format="color" />               &lt;!&ndash; 边框颜色 &ndash;&gt;
+        <attr name="frameWidth" format="dimension" />           &lt;!&ndash; 边框线宽度 &ndash;&gt;
+        <attr name="framePadding" format="dimension" />         &lt;!&ndash; 边框与图片的间距 &ndash;&gt;
+        <attr name="src" format="reference" />                  &lt;!&ndash; 资源文件 &ndash;&gt;
+        <attr name="scale" format="float"/>                     &lt;!&ndash; 缩放等级 &ndash;&gt;
+        <attr name="degree" format="float" />                   &lt;!&ndash; 旋转角度 &ndash;&gt;
+
+    </declare-styleable>-->
+
+
+</resources>

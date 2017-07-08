@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">OnClickDemo</string>
+    <string name="add_note">增加笔记</string>
+    <string name="add_image">增加图片</string>
+    <string name="add_voice">增加录音</string>
+    <string name="title">title</string>
+    <string name="double_click_input_text">双击输入文字</string>
+    <string name="finish_draw">完成手绘</string>
+
+</resources>
