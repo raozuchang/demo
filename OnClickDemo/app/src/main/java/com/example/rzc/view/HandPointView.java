@@ -30,7 +30,11 @@ public class HandPointView extends View {
     private Canvas cacheCanvas;
     int i = 0;
 
-    private int width = getMeasuredWidth(), height = getMeasuredHeight();
+    private int width,height ;
+
+    private int startX = 0;
+
+    private float mPaintSize = 1;
 
 
     public HandPointView(Context context) {
@@ -55,7 +59,7 @@ public class HandPointView extends View {
         mPaint.setDither(true);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(mPaintColor);
-        mPaint.setStrokeWidth(3f);
+        mPaint.setStrokeWidth(mPaintSize);
 
         path = new Path();
 
@@ -63,7 +67,7 @@ public class HandPointView extends View {
                 .getSystemService(Context.WINDOW_SERVICE);
 
         width = wm.getDefaultDisplay().getWidth();
-        height = wm.getDefaultDisplay().getHeight();
+        height =2*wm.getDefaultDisplay().getHeight();
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         cacheCanvas = new Canvas(mBitmap);
         cacheCanvas.drawColor(Color.parseColor("#00000000"));//透明背景
@@ -72,8 +76,10 @@ public class HandPointView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = widthMeasureSpec;
-        height = heightMeasureSpec;
+
+        setMeasuredDimension(width,height);
+        //width = getWidth();
+       // height = getHeight();
     }
 
     @Override
@@ -90,7 +96,7 @@ public class HandPointView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
+        float x = startX+ event.getX();
         float y = event.getY();
 
         switch (event.getAction()) {
@@ -107,9 +113,9 @@ public class HandPointView extends View {
                     break;
 
                 // 二次曲线方式绘制
-                path.quadTo(cur_x, cur_y, x, y);
+                //path.quadTo(cur_x, cur_y, x, y);
                 // 下面这个方法貌似跟上面一样
-                // path.lineTo(x, y);
+                path.lineTo(x, y);
                 //cacheCanvas.drawPoint(x,y,mPaint);
                 Log.e("handPoint", "onTouchEvent: x="+x+"y="+y+" i= "+(i++));
                 cur_x = x;
@@ -130,5 +136,19 @@ public class HandPointView extends View {
         invalidate();
 
         return true;
+    }
+
+    public void setStartX(int startX){
+        this.startX = startX;
+    }
+
+    public void setmPaintColor(int mPaintColor) {
+        this.mPaintColor = mPaintColor;
+        mPaint.setColor(mPaintColor);
+    }
+
+    public void setmPaintSize(float mPaintSize) {
+        this.mPaintSize = mPaintSize;
+        mPaint.setStrokeWidth(mPaintSize);
     }
 }

@@ -17,10 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets{
+        main{
+            jniLibs.srcDir(['libs'])
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -28,10 +33,10 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.agilie:rotatable-autofit-edittext:1.2'
     compile 'rongi.rotate-layout:rotate-layout:3.0.0'
-
     compile 'com.yinghe:whiteboardlib:1.1.1'
-
     compile 'com.yanzhenjie:album:1.0.7'
-
     testCompile 'junit:junit:4.12'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile files('libs/flame.jar')
+    compile files('libs/VoiceRecognition-2.1.20.jar')
 }

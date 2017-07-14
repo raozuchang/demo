@@ -20,6 +20,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 
 import com.example.rzc.onclickdemo.R;
 import com.example.rzc.utils.DensityUtils;
@@ -164,6 +165,21 @@ public class CustomTextView extends android.support.v7.widget.AppCompatImageView
 
     }
 
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        ViewGroup mViewGroup = (ViewGroup) getParent();
+        Log.e(TAG, "onMeasure: " + mViewGroup.toString());
+        if (null != mViewGroup) {
+            int parentWidth = mViewGroup.getWidth();
+            int parentHeight = mViewGroup.getHeight();
+            Log.e(TAG, "onMeasure:  H=" + parentHeight + "W= " + parentWidth);
+            setMeasuredDimension(parentWidth,parentHeight);
+            //mCenterPoint.set(parentWidth / 2, parentHeight / 2);
+        }
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -301,7 +317,7 @@ public class CustomTextView extends android.support.v7.widget.AppCompatImageView
     public void setBitmap(Bitmap bitmap) {
         mFontSize = mDefultSize;
         originBitmap = bitmap;
-        mBitmap = originBitmap.copy(Bitmap.Config.ARGB_8888, true);
+        mBitmap = originBitmap.copy(Bitmap.Config.ALPHA_8, true);
         canvasText = new Canvas(mBitmap);
         setDiagonalLength();
         initBitmaps();

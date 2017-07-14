@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/view_top"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#00000000"/>
+        <View
+            android:id="@+id/view_line"
+            android:background="#a59f9f"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/view_top"/>
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_below="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <TextView
+                android:id="@+id/view_time"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                tools:text="00:00:00"/>
+            <ProgressBar
+                android:id="@+id/pb_play"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:visibility="gone"
+                android:layout_width="100dp"
+                android:max="100"
+                android:progress="0"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+        <ImageView
+            android:layout_below="@id/view_line"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iv_top"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/cycle_image"
+            android:layout_marginLeft="20dp"
+            tools:src="@mipmap/mobile"/>
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:paddingBottom="14dp">
+        <EditText
+            android:id="@+id/tv_name"
+            android:background="@null"
+            android:maxEms="10"
+            android:maxLines="1"
+            android:hint="@string/pls_input_name"
+            android:textColorHint="#666666"
+            android:layout_marginLeft="80dp"
+            android:textSize="12sp"
+            android:textColor="#0099ff"
+            tools:text="录音1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:gravity="right"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingRight="20dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_start"
+                android:text="@string/start"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_finish"
+                android:layout_marginLeft="14dp"
+                android:text="@string/finish"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+           <!-- 新增，添加监听事件-->
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_play"
+                android:layout_marginLeft="14dp"
+                android:text="@string/play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_pause"
+                android:layout_marginLeft="14dp"
+                android:text="@string/pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

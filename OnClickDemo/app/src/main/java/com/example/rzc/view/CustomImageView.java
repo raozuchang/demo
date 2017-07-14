@@ -94,6 +94,7 @@ public class CustomImageView extends android.support.v7.widget.AppCompatImageVie
     private double halfDiagonalLength;
 
     private OperationListener operationListener;
+    private int startX = 0;
 
 
     public CustomImageView(Context context) {
@@ -251,7 +252,7 @@ public class CustomImageView extends android.support.v7.widget.AppCompatImageVie
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.tu);
+       // mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.tu);
 
         metrics = getResources().getDisplayMetrics();
         mScreenWidth = metrics.widthPixels;
@@ -260,7 +261,7 @@ public class CustomImageView extends android.support.v7.widget.AppCompatImageVie
         ViewGroup parent = (ViewGroup) this.getParent();
         if (parent!=null){
             mScreenWidth = parent.getWidth();
-            mScreenHeight = parent.getHeight();
+            mScreenHeight =parent.getHeight();
         }
 
 
@@ -332,6 +333,8 @@ public class CustomImageView extends android.support.v7.widget.AppCompatImageVie
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        setMeasuredDimension(mScreenWidth,2*mScreenHeight);
         //获取SingleTouchView所在父布局的中心点
         ViewGroup mViewGroup = (ViewGroup) getParent();
         Log.e(TAG, "onMeasure: " + mViewGroup.toString());
@@ -339,6 +342,7 @@ public class CustomImageView extends android.support.v7.widget.AppCompatImageVie
             int parentWidth = mViewGroup.getWidth();
             int parentHeight = mViewGroup.getHeight();
             Log.e(TAG, "onMeasure:  H=" + parentHeight + "W= " + parentWidth);
+            setMeasuredDimension(parentWidth,parentHeight);
             mCenterPoint.set(parentWidth / 2, parentHeight / 2);
         }
     }
@@ -600,7 +604,7 @@ public class CustomImageView extends android.support.v7.widget.AppCompatImageVie
             }
 
             if (mBitmap.getWidth() > mScreenWidth) {
-                maxScale = 1;
+                maxScale = 0.4f;
             } else {
                 maxScale = 1.0f * mScreenWidth / mBitmap.getWidth();
             }
@@ -614,7 +618,7 @@ public class CustomImageView extends android.support.v7.widget.AppCompatImageVie
             }
 
             if (mBitmap.getHeight() > mScreenWidth) {
-                maxScale = 1;
+                maxScale = 0.4f;
             } else {
                 maxScale = 1.0f * mScreenWidth / mBitmap.getHeight();
             }
@@ -650,5 +654,9 @@ public class CustomImageView extends android.support.v7.widget.AppCompatImageVie
 
     public void setOperationListener(OperationListener operationListener) {
         this.operationListener = operationListener;
+    }
+
+    public void setStartX(int startX) {
+        this.startX = startX;
     }
 }
